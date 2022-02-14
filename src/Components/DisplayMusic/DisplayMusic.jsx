@@ -24,9 +24,9 @@ const DisplayMusic = (props) => {
         return <li>{genres.genre}</li>
     });
     return (
-        <div className="container">
-            <h3> Music Details</h3>
-            <table >
+        <div>
+            <h1>Music Library</h1>
+           <table className="table">
                 <thead>
                     <tr>   
                         <th>Id</th>
@@ -45,12 +45,12 @@ const DisplayMusic = (props) => {
                             <td>{mappedMusicArtists}</td>
                             <td>{mappedMusicGenres}</td>
                         </tr>
-                    
                 </tbody>
             </table>
         </div>
     );
-
 }
 
 export default DisplayMusic;
+             
+            
