@@ -1,11 +1,11 @@
-
+import Table from 'react-bootstrap/Table'
 
 const DisplayMusic = (props) => {
 
     console.log(props);
 
     let mappedMusicId = props.musicLibrary.map(id => {
-        return <li>{id.id + 1}</li>
+        return <li>{id.id}</li>
     });
     
     let mappedMusicTitles = props.musicLibrary.map(titles => {
@@ -25,8 +25,9 @@ const DisplayMusic = (props) => {
     });
     return (
         <div>
+            
             <h1>Music Library</h1>
-           <table className="table">
+           <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>   
                         <th>Id</th>
@@ -38,15 +39,15 @@ const DisplayMusic = (props) => {
                 </thead>
                 <tbody>
                     
-                        <tr>
-                            <td>{mappedMusicId}</td>
-                            <td>{mappedMusicTitles}</td>
-                            <td>{mappedMusicAlbums}</td>
-                            <td>{mappedMusicArtists}</td>
-                            <td>{mappedMusicGenres}</td>
-                        </tr>
+                    <tr>
+                        <td>{mappedMusicId}</td>
+                        <td>{mappedMusicTitles}</td>
+                        <td>{mappedMusicAlbums}</td>
+                        <td>{mappedMusicArtists}</td>
+                        <td>{mappedMusicGenres}</td>
+                    </tr>    
                 </tbody>
-            </table>
+            </Table>
         </div>
     );
 }
