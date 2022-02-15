@@ -1,4 +1,5 @@
 import Table from 'react-bootstrap/Table'
+import './DisplayMusic.css'
 
 const DisplayMusic = (props) => {
 
@@ -21,11 +22,15 @@ const DisplayMusic = (props) => {
     let mappedMusicGenres = props.musicLibrary.map(genres => {
         return <p>{genres.genre}</p>
     });
+
+    let mappedMusicDates = props.musicLibrary.map(dates =>{
+        return <p>{dates.releaseDate}</p>
+    })
     return (
-        <div>
+        <div className='w-75 p-5'>
             
             <h1>Music Library</h1>
-           <Table striped bordered hover variant="dark" >
+           <Table striped bordered hover variant="dark" responsive='sm'>
                 <thead>
                     <tr>   
                         <th>Id</th>
@@ -33,6 +38,7 @@ const DisplayMusic = (props) => {
                         <th>Albums</th>
                         <th>Artists</th>
                         <th>Genres</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +49,7 @@ const DisplayMusic = (props) => {
                         <td>{mappedMusicAlbums}</td>
                         <td>{mappedMusicArtists}</td>
                         <td>{mappedMusicGenres}</td>
+                        <td>{mappedMusicDates}</td>
                     </tr>    
                 </tbody>
             </Table>

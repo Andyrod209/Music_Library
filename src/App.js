@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import DisplayMusic from "./Components/DisplayMusic/DisplayMusic";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DisplayMusic from "./Components/DisplayMusic/DisplayMusic";
 import SearchBar from "./Components/SearchBar/SearchBar";
+import AddNewSong from './Components/AddNewSong/AddNewSong';
+import './App.css'
 
 
 function App() {
@@ -13,11 +15,12 @@ function App() {
   // filters through and displays what the user typed
   function filterMusic(searchBy){
     let filtered = musicLibrary.filter(song => {
-      if (song.title.includes(searchBy) || song.artist.includes(searchBy) || song.album.includes(searchBy) || song.genre.includes(searchBy)) {
-      return true
+      if (song.title.includes(searchBy) || song.artist.includes(searchBy) || song.album.includes(searchBy) || song.genre.includes(searchBy) 
+      || song.releaseDate.includes(searchBy)) {
+      return true;
       }
       else{
-        return false
+        return false;
       }
     })
     setHoldFilterMusic(filtered)
@@ -36,9 +39,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>Hello world</p>
-        <button onClick={getAllMusic}>List All</button>
+        <AddNewSong />
         <SearchBar musicLibrary = {musicLibrary} filterMusic = {filterMusic}/>
+        <button className="listAll" onClick={getAllMusic}>List All</button>
         <DisplayMusic musicLibrary = {holdFilterMusic} />
       </header>
     </div>
