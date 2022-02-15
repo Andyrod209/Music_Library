@@ -2,32 +2,30 @@ import Table from 'react-bootstrap/Table'
 
 const DisplayMusic = (props) => {
 
-    console.log(props);
-
     let mappedMusicId = props.musicLibrary.map(id => {
-        return <li>{id.id}</li>
+        return <p>{id.id}</p>
     });
     
     let mappedMusicTitles = props.musicLibrary.map(titles => {
-        return <li>{titles.title}</li>
+        return <p>{titles.title}</p>
     });
     
     let mappedMusicAlbums = props.musicLibrary.map(albums => {
-        return <li>{albums.album}</li>
+        return <p>{albums.album}</p>
     })
     
     let mappedMusicArtists = props.musicLibrary.map(Artists => {
-        return <li>{Artists.artist}</li>
+        return <p>{Artists.artist}</p>
     });
     
     let mappedMusicGenres = props.musicLibrary.map(genres => {
-        return <li>{genres.genre}</li>
+        return <p>{genres.genre}</p>
     });
     return (
         <div>
             
             <h1>Music Library</h1>
-           <Table striped bordered hover variant="dark">
+           <Table striped bordered hover variant="dark" >
                 <thead>
                     <tr>   
                         <th>Id</th>
