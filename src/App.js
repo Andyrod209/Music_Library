@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack'
 import DisplayMusic from "./Components/DisplayMusic/DisplayMusic";
 import SearchBar from "./Components/SearchBar/SearchBar";
 import AddNewSong from './Components/AddNewSong/AddNewSong';
@@ -33,15 +35,17 @@ function App() {
     let response = await axios.get('http://www.devcodecampmusiclibrary.com/api/music');
     setMusicLibrary(response.data);
     setHoldFilterMusic(response.data)
-    
   }
   console.log(holdFilterMusic)
   return (
     <div className="App">
       <header className="App-header">
+      
         <AddNewSong />
+        
         <SearchBar musicLibrary = {musicLibrary} filterMusic = {filterMusic}/>
-        <button className="listAll" onClick={getAllMusic}>List All</button>
+        <Button variant="info" onClick={getAllMusic}>List All</Button>
+      
         <DisplayMusic musicLibrary = {holdFilterMusic} />
       </header>
     </div>

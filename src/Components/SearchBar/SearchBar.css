@@ -1,4 +1,13 @@
 div.container {
-    margin: 2ch;
+    margin-left: 1ch;
+    margin-top: 1em;
     text-align: right;
+ }
+
+ Button{
+    margin-left: .5em;
+ }
+ 
+ .searchBar{
+    color:rgba(29, 29, 29, 0.87);
  }

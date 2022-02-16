@@ -29,7 +29,7 @@ const DisplayMusic = (props) => {
     return (
         <div className='w-75 p-5'>
             
-            <h1>Music Library</h1>
+            <h1 className='h1Table'>Music Library</h1>
            <Table striped bordered hover variant="dark" responsive='sm'>
                 <thead>
                     <tr>   
