@@ -1,13 +1,50 @@
-const NarBarButtons = (props) => {
+import axios from "axios";
+import { useState } from "react";
+
+const SongForm = (props) => {
+
+    const [title, setTitle] = useState('')
+    const [artist, setArtist] = useState('')
+    const [album, setAlbum] = useState('')
+    const [genre, setGenre] = useState('')
+    const [releaseDate, setRelease_Date] = useState('')
+    
+  
+
+    // add new song to list of songs
+    async function createSong(){
+        let song = {
+            "title": title,
+            "artist": artist,
+            "album": album,
+            "genre": genre,
+            "release_date": releaseDate
+        };
+        console.log(song);
+        let response = await axios.post('http://127.0.0.1:8000/music/', song);
+        if(response.status === 201){
+            await props.getAllMusic;
+        }
+    }
+
+    // prevents from refreshing page
+    function handleSubmit(formEvent){
+        formEvent.preventDefault();
+        createSong()
+        }
+        
+   
+    
     return ( 
-        <form>
-            <input className="newSong" type='text' placeholder="Songname"/>
-            <input className="newSong" type='text' placeholder="Album"/>
-            <input className="newSong" type='text' placeholder="Artist"/>
-            <input className="newSong" type='text' placeholder="Genre"/>
-            <input className="newSong" type='text' placeholder="Release Date"/>
+        <form onSubmit={handleSubmit}>
+            <input className="newSong" type='text' placeholder="Songname" onChange={(event) => setTitle(event.target.value)}/>
+            <input className="newSong" type='text' placeholder="Album" onChange={(event) => setArtist(event.target.value)}/>
+            <input className="newSong" type='text' placeholder="Artist" onChange={(event) => setAlbum(event.target.value)}/>
+            <input className="newSong" type='text' placeholder="Genre" onChange={(event) => setGenre(event.target.value)}/>
+            <input className="newSong" type='date' placeholder="Date" onChange={(event) => setRelease_Date(event.target.value)}/>
+            <button type ="submit">Add</button>
         </form>
      );
 }
  
-export default NarBarButtons;
+export default SongForm;

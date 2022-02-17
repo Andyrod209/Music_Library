@@ -12,6 +12,8 @@ function App() {
   const [ musicLibrary, setMusicLibrary] = useState([]);
 
   const [holdFilterMusic, setHoldFilterMusic] = useState([]);
+  
+  console.log(holdFilterMusic)
 
   // filters through and displays what the user typed
   function filterMusic(searchBy){
@@ -30,17 +32,19 @@ function App() {
     useEffect(() => {
       getAllMusic();
     }, [])
+
   async function getAllMusic(){
     let response = await axios.get('http://127.0.0.1:8000/music/');
     setMusicLibrary(response.data);
     setHoldFilterMusic(response.data)
   }
-  console.log(holdFilterMusic)
+  
+
   return (
     <div className="App">
       <header className="App-header">
       
-        <SongForm />
+        <SongForm getAllMusic = {getAllMusic}/>
         
         <SearchBar musicLibrary = {musicLibrary} filterMusic = {filterMusic}/>
         <Button variant="info" onClick={getAllMusic}>List All</Button>

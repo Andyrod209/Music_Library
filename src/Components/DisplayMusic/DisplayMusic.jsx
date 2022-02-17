@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table'
 import './DisplayMusic.css'
 
@@ -26,6 +28,9 @@ const DisplayMusic = (props) => {
     let mappedMusicDates = props.musicLibrary.map(dates =>{
         return <p>{dates.release_date}</p>
     })
+
+
+
     return (
         <div className='w-75 p-5'>
             
@@ -42,7 +47,6 @@ const DisplayMusic = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    
                     <tr>
                         <td>{mappedMusicId}</td>
                         <td>{mappedMusicTitles}</td>
