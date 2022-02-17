@@ -24,7 +24,7 @@ const DisplayMusic = (props) => {
     });
 
     let mappedMusicDates = props.musicLibrary.map(dates =>{
-        return <p>{dates.releaseDate}</p>
+        return <p>{dates.release_date}</p>
     })
     return (
         <div className='w-75 p-5'>

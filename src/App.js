@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-import Stack from 'react-bootstrap/Stack'
-import DisplayMusic from "./Components/DisplayMusic/DisplayMusic";
-import SearchBar from "./Components/SearchBar/SearchBar";
-import AddNewSong from './Components/AddNewSong/AddNewSong';
+import DisplayMusic from "./Components/DisplayMusic/DisplayMusic.jsx";
+import SearchBar from "./Components/SearchBar/SearchBar.jsx";
+import SongForm from './Components/SongForm/SongForm.jsx';
 import './App.css'
 
 
@@ -18,7 +17,7 @@ function App() {
   function filterMusic(searchBy){
     let filtered = musicLibrary.filter(song => {
       if (song.title.includes(searchBy) || song.artist.includes(searchBy) || song.album.includes(searchBy) || song.genre.includes(searchBy) 
-      || song.releaseDate.includes(searchBy)) {
+      || song.release_date.includes(searchBy)) {
       return true;
       }
       else{
@@ -32,7 +31,7 @@ function App() {
       getAllMusic();
     }, [])
   async function getAllMusic(){
-    let response = await axios.get('http://www.devcodecampmusiclibrary.com/api/music');
+    let response = await axios.get('http://127.0.0.1:8000/music/');
     setMusicLibrary(response.data);
     setHoldFilterMusic(response.data)
   }
@@ -41,7 +40,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       
-        <AddNewSong />
+        <SongForm />
         
         <SearchBar musicLibrary = {musicLibrary} filterMusic = {filterMusic}/>
         <Button variant="info" onClick={getAllMusic}>List All</Button>
