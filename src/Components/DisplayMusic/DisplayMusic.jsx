@@ -1,39 +1,21 @@
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table'
 import './DisplayMusic.css'
 
 const DisplayMusic = (props) => {
 
-    let mappedMusicId = props.musicLibrary.map(id => {
-        return <p>{id.id}</p>
-    });
     
-    let mappedMusicTitles = props.musicLibrary.map(titles => {
-        return <p>{titles.title}</p>
-    });
-    
-    let mappedMusicAlbums = props.musicLibrary.map(albums => {
-        return <p>{albums.album}</p>
-    })
-    
-    let mappedMusicArtists = props.musicLibrary.map(Artists => {
-        return <p>{Artists.artist}</p>
-    });
-    
-    let mappedMusicGenres = props.musicLibrary.map(genres => {
-        return <p>{genres.genre}</p>
-    });
-
-    let mappedMusicDates = props.musicLibrary.map(dates =>{
-        return <p>{dates.release_date}</p>
-    })
-
-
+    async function deleteSong(id){  
+        let response = await axios.delete(`http://127.0.0.1:8000/music/${id}/`)  
+        if(response.status === 201){ 
+            await props.getAllMusic 
+            console.log(response);  
+            console.log(response.data);
+        }
+    }    
 
     return (
         <div className='w-75 p-5'>
-            
             <h1 className='h1Table'>Music Library</h1>
            <Table striped bordered hover variant="dark" responsive='sm'>
                 <thead>
@@ -47,14 +29,19 @@ const DisplayMusic = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{mappedMusicId}</td>
-                        <td>{mappedMusicTitles}</td>
-                        <td>{mappedMusicAlbums}</td>
-                        <td>{mappedMusicArtists}</td>
-                        <td>{mappedMusicGenres}</td>
-                        <td>{mappedMusicDates}</td>
-                    </tr>    
+                    {props.musicLibrary.map((entry, id) =>{
+                        return (
+                    <tr key = {id}>
+                        <td>{entry.id}</td>
+                        <td>{entry.title}</td>
+                        <td>{entry.album}</td>
+                        <td>{entry.artist}</td>
+                        <td>{entry.genre}</td>
+                        <td>{entry.release_date}</td>
+                        <button onClick={() => deleteSong(entry.id)}>DELETE</button>
+                    </tr>
+                    );
+                })}   
                 </tbody>
             </Table>
         </div>

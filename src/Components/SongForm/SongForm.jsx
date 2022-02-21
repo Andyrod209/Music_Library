@@ -23,14 +23,14 @@ const SongForm = (props) => {
         console.log(song);
         let response = await axios.post('http://127.0.0.1:8000/music/', song);
         if(response.status === 201){
-            await props.getAllMusic;
-        }
+            await props.getAllMusic
+        };
     }
 
     // prevents from refreshing page
     function handleSubmit(formEvent){
         formEvent.preventDefault();
-        createSong()
+        createSong();
         }
         
    
