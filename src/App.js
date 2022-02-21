@@ -7,7 +7,7 @@ import SearchBar from "./Components/SearchBar/SearchBar.jsx";
 import SongForm from './Components/SongForm/SongForm.jsx';
 import './App.css'
 import EditSong from "./Components/EditSong/EditSong.jsx";
-// import RemoveSong from "./Components/RemoveSong/RemoveSong.jsx";
+
 
 
 function App() {
@@ -47,8 +47,6 @@ function App() {
         <SongForm getAllMusic = {getAllMusic}/>
         
         <SearchBar musicLibrary = {musicLibrary} filterMusic = {filterMusic}/>
-
-        {/* <RemoveSong musicLibrary = {musicLibrary}/> */}
         
         <Button variant="info" onClick={getAllMusic}>List All</Button>
       
