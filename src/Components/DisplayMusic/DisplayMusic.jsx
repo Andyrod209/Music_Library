@@ -3,7 +3,6 @@ import Table from 'react-bootstrap/Table'
 import './DisplayMusic.css'
 
 const DisplayMusic = (props) => {
-
     
     async function deleteSong(id){  
         let response = await axios.delete(`http://127.0.0.1:8000/music/${id}/`)  
@@ -13,6 +12,7 @@ const DisplayMusic = (props) => {
             console.log(response.data);
         }
     }    
+
 
     return (
         <div className='w-75 p-5'>
@@ -33,11 +33,17 @@ const DisplayMusic = (props) => {
                         return (
                     <tr key = {id}>
                         <td>{entry.id}</td>
+                        
                         <td>{entry.title}</td>
+                        
                         <td>{entry.album}</td>
+                        
                         <td>{entry.artist}</td>
+                        
                         <td>{entry.genre}</td>
+                        
                         <td>{entry.release_date}</td>
+                        
                         <button onClick={() => deleteSong(entry.id)}>DELETE</button>
                     </tr>
                     );
