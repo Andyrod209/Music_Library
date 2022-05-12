@@ -1,10 +1,8 @@
 import axios from "axios"
 import { useState } from "react"
+import "./EditSong.css"
 
 const EditSong = (props) => {
-
-    const id = props.id
-    console.log(id)
     const [title, setTitle] = useState('')
     const [artist, setArtist] = useState('')
     const [album, setAlbum] = useState('')
@@ -21,12 +19,10 @@ const EditSong = (props) => {
             "release_date": releaseDate
         };
         console.log(song);
-        let response = await axios.put(`http://127.0.0.1:8000/music/${id}/`, song);
-        
+        let response = await axios.put(`http://127.0.0.1:8000/music/${props.id}/`, song);
             await props.getAllMusic();
             console.log(response);  
             console.log(response.data);
-        
     }
 
     function handleSubmit(formEvent){
@@ -34,14 +30,22 @@ const EditSong = (props) => {
         editSong();
         }
     return ( 
-        <form onSubmit={handleSubmit}>
-            <h3>Edit Song</h3>
-            <label>Id </label>
-            <input className="editsong" type='text' placeholder={title} onChange={(event) => setTitle(event.target.value)}/>
-            <input className="editsong" type='text' placeholder={album} onChange={(event) => setAlbum(event.target.value)}/>
-            <input className="editsong" type='text' placeholder={artist} onChange={(event) => setArtist(event.target.value)}/>
-            <input className="editsong" type='text' placeholder={genre} onChange={(event) => setGenre(event.target.value)}/>
-            <input className="editsong" type='date' placeholder={releaseDate} onChange={(event) => setRelease_Date(event.target.value)}/>
+        <form className="editsong" onSubmit={handleSubmit}>
+            <label>Title: </label>
+                <input type='text' placeholder={title} 
+                onChange={(event) => setTitle(event.target.value)}/>
+            <label>Album: </label>
+                <input type='text' placeholder={album} 
+                onChange={(event) => setAlbum(event.target.value)}/>
+            <label>Artist: </label>
+                <input type='text' placeholder={artist} 
+                onChange={(event) => setArtist(event.target.value)}/>
+            <label>Genre: </label>
+                <input type='text' placeholder={genre} 
+                onChange={(event) => setGenre(event.target.value)}/>
+            <label>Release Date: </label>
+                <input type='date' placeholder={releaseDate}
+                onChange={(event) => setRelease_Date(event.target.value)}/>
             <button type ="submit">Edit</button>
         </form>
      );

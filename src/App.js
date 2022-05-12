@@ -6,7 +6,6 @@ import DisplayMusic from "./Components/DisplayMusic/DisplayMusic.jsx";
 import SearchBar from "./Components/SearchBar/SearchBar.jsx";
 import SongForm from './Components/SongForm/SongForm.jsx';
 import './App.css'
-// import EditSong from "./Components/EditSong/EditSong.jsx";
 
 
 
@@ -43,15 +42,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      
         <SongForm getAllMusic = {getAllMusic}/>
-        
         <SearchBar musicLibrary = {musicLibrary} filterMusic = {filterMusic}/>
-        
         <Button variant="info" onClick={getAllMusic}>List All</Button>
-      
         <DisplayMusic musicLibrary = {holdFilterMusic} getAllMusic = {getAllMusic}/>
-        {/* <EditSong musicLibrary = {musicLibrary} getAllMusic = {getAllMusic}/> */}
       </header>
     </div>
   );
