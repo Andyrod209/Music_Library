@@ -22,9 +22,10 @@ const SongForm = (props) => {
         };
         console.log(song);
         let response = await axios.post('http://127.0.0.1:8000/music/', song);
-        if(response.status === 201){
-            await props.getAllMusic
-        };
+            await props.getAllMusic();
+            console.log(response);
+            console.log(response.data);
+        
     }
 
     // prevents from refreshing page
@@ -37,6 +38,7 @@ const SongForm = (props) => {
     
     return ( 
         <form onSubmit={handleSubmit}>
+            <h3>Add New Song</h3>
             <input className="newSong" type='text' placeholder="Songname" onChange={(event) => setTitle(event.target.value)}/>
             <input className="newSong" type='text' placeholder="Album" onChange={(event) => setArtist(event.target.value)}/>
             <input className="newSong" type='text' placeholder="Artist" onChange={(event) => setAlbum(event.target.value)}/>

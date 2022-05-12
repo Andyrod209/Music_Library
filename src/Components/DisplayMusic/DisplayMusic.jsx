@@ -1,17 +1,33 @@
 import axios from 'axios';
 import Table from 'react-bootstrap/Table'
-import './DisplayMusic.css'
+import { useState } from 'react';
+import './DisplayMusic.css';
+import EditSong from '../EditSong/EditSong.jsx';
 
 const DisplayMusic = (props) => {
+    //Step one: click edit button on table to save song's id to state
+    const [id, setId] = useState(Number)
     
+    //Step two: Don't render edit form UNTIL edit button is clicked
+    function songToEdit(givenId){
+        
+        setId(givenId)
+        console.log(id)
+        
+        return (
+            <div>
+                <EditSong givenId = {givenId}/>
+            </div>
+        )};
+    
+
     async function deleteSong(id){  
         let response = await axios.delete(`http://127.0.0.1:8000/music/${id}/`)  
-        if(response.status === 201){ 
-            await props.getAllMusic 
-            console.log(response);  
-            console.log(response.data);
-        }
-    }    
+        await props.getAllMusic(); 
+        console.log(response);  
+        console.log(response.data);
+        
+    };    
 
 
     return (
@@ -43,13 +59,15 @@ const DisplayMusic = (props) => {
                         <td>{entry.genre}</td>
                         
                         <td>{entry.release_date}</td>
-                        
-                        <button onClick={() => deleteSong(entry.id)}>DELETE</button>
+
+                        <td><button onClick={() => songToEdit(entry.id)} >Edit</button></td>
+                        <td><button onClick={() => deleteSong(entry.id)}>DELETE</button></td>
                     </tr>
                     );
                 })}   
                 </tbody>
             </Table>
+            <EditSong id = {id}/>
         </div>
     );
 }
