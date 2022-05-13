@@ -1,3 +1,14 @@
 .h1Table{
     color: black;
 }
+
+.delete-button{
+    background-color: rgba(78, 22, 113, 0.555);
+    border-radius: 10px;
+    height: 40px;
+    border-color: rgb(221, 15, 15);
+}
+
+.delete-button:hover{
+    background-color: rgba(221, 15, 15, 0.623);
+}
