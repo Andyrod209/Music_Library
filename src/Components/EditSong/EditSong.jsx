@@ -35,6 +35,7 @@ const EditSong = (props) => {
     function handleSubmit(formEvent){
         formEvent.preventDefault();
         editSong();
+        handleClose();
         }
     console.log(props.id)
     return ( 
@@ -61,12 +62,11 @@ const EditSong = (props) => {
                     <label>Release Date: </label>
                     <input type='date' placeholder={releaseDate}
                         onChange={(event) => setRelease_Date(event.target.value)} />
-                    <button type="submit">Edit</button>
                 </form>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>Close</Button>
-                <Button variant="primary" onClick={handleClose}>Save Changes</Button>
+                <Button variant="primary" onClick={handleSubmit} value="Submit" type="submit">Save Changes</Button>
             </Modal.Footer>
         </Modal>
         </>
