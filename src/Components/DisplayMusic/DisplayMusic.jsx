@@ -1,31 +1,10 @@
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
-import { useState } from 'react';
 import './DisplayMusic.css';
 import EditSong from '../EditSong/EditSong.jsx';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+
 
 const DisplayMusic = (props) => {
-    //Step one: click edit button on table to save song's id to state
-    const [id, setId] = useState(Number)
-    // modal variables
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    //Step two: Don't render edit form UNTIL edit button is clicked
-    function songToEdit(givenId){
-        setId(givenId);
-        console.log(id);
-        handleShow();
-        
-        return (
-            <div>
-                <EditSong id = {givenId}/>
-            </div>
-        )};
-    
 
     async function deleteSong(id){  
         let response = await axios.delete(`http://127.0.0.1:8000/music/${id}/`)  
@@ -34,7 +13,6 @@ const DisplayMusic = (props) => {
         console.log(response.data);
         
     };    
-
 
     return (
         <div>
@@ -67,7 +45,7 @@ const DisplayMusic = (props) => {
 
                                 <td>{entry.release_date}</td>
 
-                                <td><Button variant="primary" onClick={() => songToEdit(entry.id)}>Edit</Button></td>
+                                <td><EditSong id={entry.id} getAllMusic={props.getAllMusic} /></td>
                                 <td><button onClick={() => deleteSong(entry.id)}>DELETE</button></td>
                             </tr>
                         );
@@ -76,18 +54,7 @@ const DisplayMusic = (props) => {
             </Table>
 
             </div>
-            <Modal show={show} onHide={handleClose} animation={false}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <EditSong />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>Close</Button>
-                    <Button variant="primary" onClick={handleClose}>Save Changes</Button>
-                </Modal.Footer>
-            </Modal>
+            
         </div>  
     );
 }
