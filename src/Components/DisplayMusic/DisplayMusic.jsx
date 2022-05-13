@@ -45,7 +45,7 @@ const DisplayMusic = (props) => {
 
                                 <td>{entry.release_date}</td>
 
-                                <td><EditSong id={entry.id} getAllMusic={props.getAllMusic} /></td>
+                                <td><EditSong id={entry.id} getAllMusic={props.getAllMusic} title={entry.title}/></td>
                                 <td><button onClick={() => deleteSong(entry.id)}>DELETE</button></td>
                             </tr>
                         );
