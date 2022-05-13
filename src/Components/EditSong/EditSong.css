@@ -1,5 +1,4 @@
-/* modal form is all smashed together..
-fix inputs and have then have some air
-
-TIPS: using margin could just do it. if not move on using flex 
-and have it wrap. */
+.editsong{
+    display: flex;
+    flex-direction: column;
+}
