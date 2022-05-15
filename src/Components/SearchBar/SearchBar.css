@@ -1,8 +1,8 @@
 div.container {
+   display: inline;
    margin-left: 1ch;
    margin-top: 1em;
    text-align: right;
-   display: inline-block;
  }
 
 Button{

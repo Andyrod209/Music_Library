@@ -4,5 +4,6 @@ body{
 }
 
 button.btn.btn-info{
-    margin-left: 43em;
+    display: inline;
+    align-items: center;
 }

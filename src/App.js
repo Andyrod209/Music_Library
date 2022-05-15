@@ -41,9 +41,11 @@ function App() {
 
   return (
     <div className="App">
-        <SongForm getAllMusic = {getAllMusic}/>
-        <SearchBar musicLibrary = {musicLibrary} filterMusic = {filterMusic}/>
-        <Button variant="info" onClick={getAllMusic}>List All</Button>
+        <div className="header">
+          <SongForm getAllMusic = {getAllMusic}/>
+          <Button variant="info" onClick={getAllMusic}>List All Songs</Button>
+          <SearchBar musicLibrary = {musicLibrary} filterMusic = {filterMusic}/>
+        </div>
         <DisplayMusic musicLibrary = {holdFilterMusic} getAllMusic = {getAllMusic}/>
     </div>
   );
