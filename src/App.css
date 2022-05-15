@@ -1,5 +1,6 @@
 body{
     background-color: rgb(55, 56, 112);
+    padding: 15px;
 }
 
 button.btn.btn-info{

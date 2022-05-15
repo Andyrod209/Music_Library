@@ -41,12 +41,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
         <SongForm getAllMusic = {getAllMusic}/>
         <SearchBar musicLibrary = {musicLibrary} filterMusic = {filterMusic}/>
         <Button variant="info" onClick={getAllMusic}>List All</Button>
         <DisplayMusic musicLibrary = {holdFilterMusic} getAllMusic = {getAllMusic}/>
-      </header>
     </div>
   );
 }
