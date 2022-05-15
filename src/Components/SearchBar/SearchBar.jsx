@@ -17,7 +17,7 @@ const SearchBar = (props) => {
   
     return ( 
         <div className="container">
-            <form onSubmit={handleSearch}>
+            <form className="form" onSubmit={handleSearch}>
                 <h4 className="searchBar">Search Bar</h4>
                 <input className="search" type='text' placeholder="Search" onChange={handleUserInput}/>
                 <Button variant="primary" onClick={handleSearch}>Submit</Button>          
