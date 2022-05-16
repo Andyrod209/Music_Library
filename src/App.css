@@ -3,6 +3,11 @@ body{
     padding: 15px;
 }
 
+.header{
+    display: flex;
+    justify-content: space-around;
+}
+
 button.btn.btn-info{
     display: inline;
     align-items: center;
